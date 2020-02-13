@@ -1,0 +1,8 @@
+<div class="card">
+    <div class="container">
+        <h4>{{todoItem.title}} </h4>
+        <span style="font-style: italic;">{{todoItem.description}} </span>
+        <div>Luotu: {{todoItem.createdAt.toLocaleString()}}</div>
+        <div>{{todoItem.done ? 'Tehty' : 'Kesken'}}</div>
+    </div>
+</div>
