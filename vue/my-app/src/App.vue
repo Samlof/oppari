@@ -1,12 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <TodoListItem
+      v-for="item in items"
+      :key="item.id"
+      :todoItem="item"
+    ></TodoListItem>
   </div>
 </template>
+
+<script>
+import TodoListItem from "./components/TodoListItem";
+import { GetAll, DemoInit } from "./api/localStorage";
+
+export default {
+  name: "App",
+  data: () => ({
+    /** @type {import('./api/todotype').TodoType} */
+    items: [],
+    test: ""
+  }),
+  components: {
+    TodoListItem
+  },
+  created() {
+    DemoInit();
+    this.items = GetAll();
+  }
+};
+</script>
 
 <style>
 #app {
@@ -15,18 +36,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  background-color: lightgray;
 }
 </style>

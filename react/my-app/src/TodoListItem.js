@@ -4,9 +4,7 @@ import React from 'react';
  * Renders a single todo item into a card
  * @param {{todoItem: import('./api/todotype').TodoItem}} props
  */
-const TodoListItem = props => {
-  const { todoItem } = props;
-
+const TodoListItem = ({ todoItem }) => {
   return (
     <div className="card">
       <div className="container">

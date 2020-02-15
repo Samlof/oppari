@@ -14,7 +14,9 @@ function App() {
     const all = GetAll();
     setItems(all);
   }, []);
-  return items.map(todoItem => <TodoListItem todoItem={todoItem} />);
+  return items.map(todoItem => (
+    <TodoListItem key={todoItem.id} todoItem={todoItem} />
+  ));
 }
 
 export default App;
