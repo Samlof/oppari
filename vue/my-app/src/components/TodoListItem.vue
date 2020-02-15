@@ -4,7 +4,7 @@
       <h4>{{ todoItem.title }}</h4>
       <span style="fontStyle: 'italic'">{{ todoItem.description }} </span>
       <div>Luotu: {{ todoItem.createdAt.toLocaleString() }}</div>
-      <div>{{ todoItem.done ? "Tehty" : "Kesken" }}</div>
+      <div>{{ todoItem.done ? 'Tehty' : 'Kesken' }}</div>
     </div>
   </div>
 </template>
@@ -15,9 +15,9 @@ export default {
     /**@type{{new():import('../api/todotype').TodoItem)}} todoItem */
     todoItem: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 

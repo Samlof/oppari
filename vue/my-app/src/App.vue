@@ -9,23 +9,23 @@
 </template>
 
 <script>
-import TodoListItem from "./components/TodoListItem";
-import { GetAll, DemoInit } from "./api/localStorage";
+import TodoListItem from './components/TodoListItem';
+import { GetAll, DemoInit } from './api/localStorage';
 
 export default {
-  name: "App",
+  name: 'App',
   data: () => ({
     /** @type {import('./api/todotype').TodoType} */
     items: [],
-    test: ""
+    test: '',
   }),
   components: {
-    TodoListItem
+    TodoListItem,
   },
   created() {
     DemoInit();
     this.items = GetAll();
-  }
+  },
 };
 </script>
 
