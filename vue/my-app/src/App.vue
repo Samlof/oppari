@@ -15,9 +15,7 @@ import { GetAll, DemoInit } from './api/localStorage';
 export default {
   name: 'App',
   data: () => ({
-    /** @type {import('./api/todotype').TodoType} */
-    items: [],
-    test: '',
+    items: /** @type {import('./api/todotype').TodoItem[]} */ ([]),
   }),
   components: {
     TodoListItem,

@@ -10,6 +10,9 @@
 </template>
 
 <script>
+/**
+ * TodoListItem
+ */
 export default {
   props: {
     /**@type{{new():import('../api/todotype').TodoItem)}} todoItem */
