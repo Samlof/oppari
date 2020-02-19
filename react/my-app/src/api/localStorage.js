@@ -33,11 +33,14 @@ export const DemoInit = () => {
 /**
  * Adds the new item to db
  * @param {TodoItem} item Item to add
+ * @returns {TodoItem}
  */
 export const AddItem = item => {
   const all = GetAll();
+  item.id = all.length + 1;
   all.push(item);
   Save(all);
+  return item;
 };
 
 /**

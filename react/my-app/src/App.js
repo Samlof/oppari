@@ -1,5 +1,6 @@
 import React from 'react';
-import { DemoInit, GetAll } from './api/localStorage';
+import AddNewForm from './AddNewForm';
+import { AddItem, DemoInit, GetAll } from './api/localStorage';
 import './App.css';
 import TodoListItem from './TodoListItem';
 
@@ -14,9 +15,27 @@ function App() {
     const all = GetAll();
     setItems(all);
   }, []);
-  return items.map(todoItem => (
-    <TodoListItem key={todoItem.id} todoItem={todoItem} />
-  ));
+
+  /**
+   * createdCb
+   * @param {import('./api/todotype').TodoItem} todo
+   */
+  const createdCb = todo => {
+    todo = AddItem(todo);
+
+    setItems(p => {
+      p.push(todo);
+      return p;
+    });
+  };
+  return (
+    <div>
+      {items.map(todoItem => (
+        <TodoListItem key={todoItem.id} todoItem={todoItem} />
+      ))}
+      <AddNewForm createdCb={createdCb} />
+    </div>
+  );
 }
 
 export default App;
