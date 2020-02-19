@@ -23,10 +23,7 @@ function App() {
   const createdCb = todo => {
     todo = AddItem(todo);
 
-    setItems(p => {
-      p.push(todo);
-      return p;
-    });
+    setItems(p => p.concat(todo));
   };
   return (
     <div>
