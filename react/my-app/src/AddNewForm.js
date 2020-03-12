@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * @typedef {import('./api/todotype').TodoItem} TodoItem
@@ -14,8 +14,8 @@ import React from 'react';
  * @param {AddNewFormProps} props
  */
 const AddNewForm = ({ createdCb }) => {
-  const [title, setTitle] = React.useState('');
-  const [description, setDescription] = React.useState('');
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   const onSubmit = () => {
     /** @type {TodoItem} */
@@ -24,35 +24,36 @@ const AddNewForm = ({ createdCb }) => {
       description: description,
       title: title,
       done: false,
-      id: -1,
+      id: -1
     };
     createdCb(newTodo);
+    setTitle("");
+    setDescription("");
   };
   return (
-    <form
-      onSubmit={e => {
-        e.preventDefault();
-        onSubmit();
-      }}>
-      <label>
-        Title:
-        <input
-          type="text"
-          id="title-input"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          id="title-input"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        />
-      </label>
-    </form>
+    <div className="card">
+      <div className="container">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            onSubmit();
+          }}
+        >
+          <h4>Luo uusi</h4>
+          <div>
+            <label>
+              Title: <input type="text" id="title-input" value={title} onChange={e => setTitle(e.target.value)} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Description: <input type="text" id="title-input" value={description} onChange={e => setDescription(e.target.value)} />
+            </label>
+          </div>
+          <input type="submit" value="Lisää" />
+        </form>
+      </div>
+    </div>
   );
 };
 
