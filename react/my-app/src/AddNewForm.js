@@ -47,7 +47,7 @@ const AddNewForm = ({ createdCb }) => {
           </div>
           <div>
             <label>
-              Description: <input type="text" id="title-input" value={description} onChange={e => setDescription(e.target.value)} />
+              Description: <input type="text" id="description-input" value={description} onChange={e => setDescription(e.target.value)} />
             </label>
           </div>
           <input type="submit" value="Lisää" />

@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="container">
+        <h4>Luo uusi</h4>
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+            <div>
+                <label for="name">
+                    Title
+                </label>
+                <input id="title" type="text" formControlName="title">
+            </div>
+
+            <div>
+                <label for="address">
+                    Description
+                </label>
+                <input id="description" type="text" formControlName="description">
+            </div>
+            <button class="button" type="submit">Lisää</button>
+        </form>
+    </div>
+</div>
