@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -8,22 +8,20 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class AddNewItemComponent {
   constructor(private formBuilder: FormBuilder) {
-    this.checkoutForm = this.formBuilder.group({
+    this.addnewForm = this.formBuilder.group({
       title: "",
       description: ""
     });
   }
-  checkoutForm: FormGroup;
+  addnewForm: FormGroup;
   @Output() onCreateNew: EventEmitter<addNewItem> = new EventEmitter();
 
   onSubmit(customerData) {
-    // Process checkout data here
-    this.checkoutForm.reset();
+    this.addnewForm.reset();
     this.onCreateNew.emit({
       title: customerData.title,
       desc: customerData.description
     });
-    console.warn("Your order has been submitted", customerData);
   }
 }
 
