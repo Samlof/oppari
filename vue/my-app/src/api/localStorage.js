@@ -36,6 +36,8 @@ export const DemoInit = () => {
  */
 export const AddItem = item => {
   const all = GetAll();
+  item.id = Math.max(...all.map(x => x.id)) + 1;
+  item.createdAt = new Date();
   all.push(item);
   Save(all);
 };

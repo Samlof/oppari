@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <TodoListItem
+    <AddItemComponent v-on:new-added="newAdded"></AddItemComponent>
+    <TodoListItemComponent
       v-for="item in items"
       :key="item.id"
       :todoItem="item"
-    ></TodoListItem>
+    ></TodoListItemComponent>
   </div>
 </template>
 
 <script>
-import TodoListItem from './components/TodoListItem';
-import { GetAll, DemoInit } from './api/localStorage';
+import TodoListItemComponent from './components/TodoListItem';
+import AddItemComponent from './components/AddItem';
+import { GetAll, DemoInit, AddItem } from './api/localStorage';
 
 export default {
   name: 'App',
@@ -18,11 +20,21 @@ export default {
     items: /** @type {import('./api/todotype').TodoItem[]} */ ([]),
   }),
   components: {
-    TodoListItem,
+    TodoListItemComponent,
+    AddItemComponent,
   },
   created() {
-    DemoInit();
     this.items = GetAll();
+    if (this.items.length === 0) {
+      DemoInit();
+    }
+    this.items = GetAll();
+  },
+  methods: {
+    newAdded: function(title, description) {
+      AddItem({ title, description, done: false });
+      this.items = GetAll();
+    },
   },
 };
 </script>
